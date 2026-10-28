@@ -1,4 +1,4 @@
-NAME = libft.a
+NAME = printf.a
 $(CC) = cc
 
 MY_SOURCES =	ft_printf.c
