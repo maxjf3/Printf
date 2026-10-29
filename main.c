@@ -1,5 +1,4 @@
-#include "header/libft.h"
-#include "header/libftprintf.h"
+#include "include/libftprintf.h"
 
 #include <stdio.h>
 
