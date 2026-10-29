@@ -1,5 +1,5 @@
 NAME = libftprintf.a
-$(CC) = cc
+CC = cc
 
 MY_SOURCES =	src/ft_printf.c \
 				src/ft_unsigned_itoa.c \

@@ -6,7 +6,7 @@
 /*   By: max <max@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/27 20:56:54 by mjardin           #+#    #+#             */
-/*   Updated: 2026/10/29 20:54:17 by max              ###   ########.fr       */
+/*   Updated: 2026/10/29 21:48:18 by max              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ static void	ft_print_args2(char *s, va_list lst_args, int *ret_len)
 		free(str);
 	}
 	if (*s == 'p')
-		ft_convert_base(lst_args, *s);
+		ft_convert_base(lst_args, *s, ret_len);
 	if (*s == 'x' || *s == 'X')
-		ft_convert_base(lst_args, *s);
+		ft_convert_base(lst_args, *s, ret_len);
 	if (*s == '%')
 	{
 		ft_putchar_fd('%' , 1);
@@ -71,6 +71,8 @@ static void	ft_print_args(char *s, va_list lst_args, int *ret_len)
 	if (*s == 's')
 	{
 		str = va_arg(lst_args, char *);
+		if (!str)
+			return ;
 		ft_putstr_fd(str, 1);
 		*ret_len += ft_strlen(str);
 	}
@@ -82,24 +84,28 @@ int	ft_printf(const char *s, ...)
 {
 	va_list	lst_args;
 	int		ret_len;
+	int		i;
 
 	if (!s)
 		return (-1);
 	va_start(lst_args, s);
 	ret_len = 0;
-	while (*s)
+	i = 0;
+	while (s[i])
 	{
-		if (*s == '%')
+		if (s[i] == '%')
 		{
-			s++;
-			if (!ft_get_type(*s))
+			if (!ft_get_type(s[i + 1]))
 				return (-1);
-			ft_print_args((char *)s, lst_args, &ret_len);
-			s++;
+			ft_print_args((char *)s + i + 1, lst_args, &ret_len);
+			i += 2;
 		}
-		ft_putchar_fd(*s, 1);
-		s++;
-		ret_len++;
+		else
+		{
+			ft_putchar_fd(s[i], 1);
+			ret_len++;
+			i++;
+		}
 	}
 	va_end(lst_args);
 	return (ret_len);
