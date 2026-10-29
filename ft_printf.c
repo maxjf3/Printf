@@ -3,39 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: max <max@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: mjardin <mjardin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/27 20:56:54 by mjardin           #+#    #+#             */
-/*   Updated: 2026/10/29 12:54:40 by max              ###   ########.fr       */
+/*   Updated: 2026/10/29 15:41:16 by mjardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "printf.h"
-
-static void	ft_print_args(char *s, va_list lst_args, int *ret_len)
-{
-	char *res;
-
-	if (*s == 'd')
-	{
-		res = ft_itoa(va_arg(lst_args, int));
-		ft_putstr_fd(res, 1);
-		(*ret_len) += ft_strlen(res);
-		free(res);
-	}
-	if (*s == 'c')
-	{
-		ft_putchar_fd(va_arg(lst_args, int), 1);
-		(*ret_len)++;
-	}
-	if (*s == 's')
-	{
-		res = va_arg(lst_args, char *);
-		ft_putstr_fd(res, 1);
-		(*ret_len) += ft_strlen(res);
-	}
-}
 
 static int	ft_get_type(char s)
 {
@@ -49,6 +25,55 @@ static int	ft_get_type(char s)
 		types++;
 	}
 	return (0);
+}
+
+static void	ft_print_args2(char *s, va_list lst_args, int *ret_len)
+{
+	//char	*str;
+	(void)lst_args;
+
+	if (*s == 'p')
+		return ;
+	if (*s == 'i')
+		return ;
+	if (*s == 'u')
+		return ;
+	if (*s == 'x')
+		return ;
+	if (*s == 'X')
+		return ;
+	if (*s == '%')
+	{
+		ft_putchar_fd('%' , 1);
+		*ret_len += 1;
+	}
+		
+}
+
+static void	ft_print_args(char *s, va_list lst_args, int *ret_len)
+{
+	char *str;
+
+	if (*s == 'd')
+	{
+		str = ft_itoa(va_arg(lst_args, int));
+		ft_putstr_fd(str, 1);
+		*ret_len += ft_strlen(str);
+		free(str);
+	}
+	if (*s == 'c')
+	{
+		ft_putchar_fd(va_arg(lst_args, int), 1);
+		*ret_len += 1;
+	}
+	if (*s == 's')
+	{
+		str = va_arg(lst_args, char *);
+		ft_putstr_fd(str, 1);
+		*ret_len += ft_strlen(str);
+	}
+	if (ft_get_type(*s))
+		ft_print_args2(s, lst_args, ret_len);
 }
 
 int	ft_printf(const char *s, ...)
