@@ -1,13 +1,16 @@
-NAME = printf.a
+NAME = libftprintf.a
 $(CC) = cc
 
-MY_SOURCES =	ft_printf.c
+MY_SOURCES =	src/ft_printf.c \
+				src/ft_unsigned_itoa.c \
+				src/ft_convert_base.c \
+				src/ft_putnbr_base.c
 
 MY_OBJECTS = $(MY_SOURCES:.c=.o) 
 
 CFLAGS = -Wall -Wextra -Werror
 
-DEBUGFLAGS = -g -lbsd -fPIC main.c libft.a
+DEBUGFLAGS = -g -lbsd main.c libft.a
 
 all: $(NAME)
 
