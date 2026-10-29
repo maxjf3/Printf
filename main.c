@@ -5,7 +5,7 @@
 
 int	main(void)
 {
-	printf("Bonjour ca va ? int->|%d| char->|%c| str->|%s|\n\n", 1378998, 'c', "cc");
-	ft_printf("Bonjour ca va ? int->|%d| char->|%c| str->|%s|\n\n", 1378998, 'c', "cc");
+	printf("Moi %d\n", ft_printf("Moi: %s %c %d\n", "cacalol", 'y', 1234567890));
+	printf("Elle %d\n", printf("Vrai %s %c %d\n", "cacalol", 'y', 1234567890));
 	return (0);
 }
