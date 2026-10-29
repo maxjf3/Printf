@@ -6,7 +6,7 @@
 /*   By: max <max@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 18:55:28 by max               #+#    #+#             */
-/*   Updated: 2026/10/29 22:51:54 by max              ###   ########.fr       */
+/*   Updated: 2026/10/29 23:38:17 by max              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	ft_convert_base(va_list lst_args, char c, int *ret_len)
 
 	if (c == 'p')
 	{
-		(void)hex;
 		tmp = va_arg(lst_args, void *);
 		if (!tmp)
 		{
@@ -33,14 +32,10 @@ void	ft_convert_base(va_list lst_args, char c, int *ret_len)
 		(*ret_len) += 2;
 		ft_putnbr_base(adr, "0123456789abcdef", ret_len);
 	}
+	if (c == 'x' || c == 'X')
+		hex = va_arg(lst_args, int);
 	if (c == 'x')
-	{
-		hex = va_arg(lst_args, int);
 		ft_putnbr_base((unsigned int)hex, "0123456789abcdef", ret_len);
-	}
 	if (c == 'X')
-	{
-		hex = va_arg(lst_args, int);
 		ft_putnbr_base((unsigned int)hex, "0123456789ABCDEF", ret_len);
 	}
-}

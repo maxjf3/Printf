@@ -1,4 +1,4 @@
-#include "include/libftprintf.h"
+#include "include/ft_printf.h"
 
 #include <stdio.h>
 
@@ -15,7 +15,6 @@
 #include <string.h>
 #include <unistd.h>
 #include <limits.h>
-#include "header/libftprintf.h"
 
 typedef struct s_capture
 {

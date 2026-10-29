@@ -6,7 +6,7 @@
 /*   By: max <max@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/27 20:56:54 by mjardin           #+#    #+#             */
-/*   Updated: 2026/10/29 22:51:53 by max              ###   ########.fr       */
+/*   Updated: 2026/10/29 23:27:58 by max              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,11 @@ static void	ft_print_args2(char *s, va_list lst_args, int *ret_len)
 	char			*str;
 	unsigned int	res;
 
+	if (*s == 'c')
+	{
+		ft_putchar_fd(va_arg(lst_args, int), 1);
+		*ret_len += 1;
+	}
 	if (*s == 'u')
 	{
 		res = va_arg(lst_args, unsigned int);
@@ -39,9 +44,7 @@ static void	ft_print_args2(char *s, va_list lst_args, int *ret_len)
 		*ret_len += ft_strlen(str);
 		free(str);
 	}
-	if (*s == 'p')
-		ft_convert_base(lst_args, *s, ret_len);
-	if (*s == 'x' || *s == 'X')
+	if (*s == 'x' || *s == 'X' || *s == 'p')
 		ft_convert_base(lst_args, *s, ret_len);
 	if (*s == '%')
 	{
@@ -62,16 +65,15 @@ static void	ft_print_args(char *s, va_list lst_args, int *ret_len)
 		*ret_len += ft_strlen(str);
 		free(str);
 	}
-	if (*s == 'c')
-	{
-		ft_putchar_fd(va_arg(lst_args, int), 1);
-		*ret_len += 1;
-	}
 	if (*s == 's')
 	{
 		str = va_arg(lst_args, char *);
 		if (!str)
+		{
+			ft_putstr_fd("(null)", 1);
+			*ret_len += 6;
 			return ;
+		}
 		ft_putstr_fd(str, 1);
 		*ret_len += ft_strlen(str);
 	}
@@ -83,27 +85,25 @@ int	ft_printf(const char *s, ...)
 {
 	va_list	lst_args;
 	int		ret_len;
-	int		i;
 
 	if (!s)
 		return (-1);
 	va_start(lst_args, s);
 	ret_len = 0;
-	i = 0;
-	while (s[i])
+	while (*s)
 	{
-		if (s[i] == '%')
+		if (*s == '%')
 		{
-			if (!ft_get_type(s[i + 1]))
+			if (!ft_get_type(*(s + 1)))
 				return (-1);
-			ft_print_args((char *)s + i + 1, lst_args, &ret_len);
-			i += 2;
+			ft_print_args((char *)s + 1, lst_args, &ret_len);
+			s += 2;
 		}
 		else
 		{
-			ft_putchar_fd(s[i], 1);
+			ft_putchar_fd(*s, 1);
 			ret_len++;
-			i++;
+			s++;
 		}
 	}
 	va_end(lst_args);
