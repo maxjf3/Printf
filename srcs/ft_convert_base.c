@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_convert_base.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: max <max@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: mjardin <mjardin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/29 18:55:28 by max               #+#    #+#             */
-/*   Updated: 2026/10/29 23:38:17 by max              ###   ########.fr       */
+/*   Updated: 2026/10/30 09:40:59 by mjardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	ft_convert_base(va_list lst_args, char c, int *ret_len)
 {
-	void 				*tmp;
-	unsigned long		adr;
-	int					hex;
+	void			*tmp;
+	unsigned long	adr;
+	int				hex;
 
 	if (c == 'p')
 	{
@@ -38,4 +38,4 @@ void	ft_convert_base(va_list lst_args, char c, int *ret_len)
 		ft_putnbr_base((unsigned int)hex, "0123456789abcdef", ret_len);
 	if (c == 'X')
 		ft_putnbr_base((unsigned int)hex, "0123456789ABCDEF", ret_len);
-	}
+}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_unsigned_itoa.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: max <max@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: mjardin <mjardin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/22 15:30:15 by mjardin           #+#    #+#             */
-/*   Updated: 2026/10/29 22:51:51 by max              ###   ########.fr       */
+/*   Updated: 2026/10/30 09:42:08 by mjardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ static char	*ft_alloc(unsigned long *n, unsigned long *i)
 
 char	*ft_unsigned_itoa(unsigned long n)
 {
-	char	*res;
-	unsigned long		i;
+	char			*res;
+	unsigned long	i;
 
 	if (n == 0)
 		return (ft_strdup("0"));

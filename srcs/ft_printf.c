@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: max <max@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: mjardin <mjardin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/27 20:56:54 by mjardin           #+#    #+#             */
-/*   Updated: 2026/10/29 23:27:58 by max              ###   ########.fr       */
+/*   Updated: 2026/10/30 09:41:48 by mjardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,14 @@ static void	ft_print_args2(char *s, va_list lst_args, int *ret_len)
 		ft_convert_base(lst_args, *s, ret_len);
 	if (*s == '%')
 	{
-		ft_putchar_fd('%' , 1);
+		ft_putchar_fd('%', 1);
 		*ret_len += 1;
 	}
-		
 }
 
 static void	ft_print_args(char *s, va_list lst_args, int *ret_len)
 {
-	char *str;
+	char	*str;
 
 	if (*s == 'd' || *s == 'i')
 	{
