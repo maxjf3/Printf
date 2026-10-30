@@ -6,7 +6,7 @@
 /*   By: mjardin <mjardin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/27 20:56:54 by mjardin           #+#    #+#             */
-/*   Updated: 2026/10/30 10:18:28 by mjardin          ###   ########.fr       */
+/*   Updated: 2026/10/30 10:22:06 by mjardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ static void	ft_print_args(char *s, va_list lst_args, int *ret_len)
 		*ret_len += ft_strlen(str);
 	}
 	if (ft_get_type(*s))
-		ft_print_args2(s, lst_args, ret_len);;
+		ft_print_args2(s, lst_args, ret_len);
 }
 
 int	ft_printf(const char *s, ...)
