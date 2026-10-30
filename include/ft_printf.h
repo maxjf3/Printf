@@ -30,6 +30,6 @@ void	*ft_calloc(size_t nmemb, size_t size);
 void	ft_putnbr_base(unsigned long adr, char *base, int *ret_len);
 void	ft_convert_base(va_list lst_args, char c, int *ret_len);
 char	*ft_unsigned_itoa(unsigned long n);
-int		ft_printf(const char *, ...);
+int		ft_printf(const char *s, ...);
 
 #endif
