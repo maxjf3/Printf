@@ -6,7 +6,7 @@
 /*   By: mjardin <mjardin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/27 20:59:20 by mjardin           #+#    #+#             */
-/*   Updated: 2026/10/30 09:42:28 by mjardin          ###   ########.fr       */
+/*   Updated: 2026/10/30 11:03:17 by mjardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,6 @@ void	*ft_calloc(size_t nmemb, size_t size);
 void	ft_putnbr_base(unsigned long adr, char *base, int *ret_len);
 void	ft_convert_base(va_list lst_args, char c, int *ret_len);
 char	*ft_unsigned_itoa(unsigned long n);
-int		ft_printf(const char *s, ...);
+int		ft_printf(const char *, ...);
 
 #endif
